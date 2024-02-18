@@ -17,5 +17,15 @@ namespace StudentAPI.Controllers
         {
             return await _mediator.Send(new StudentListQuery());
         }
+        [HttpGet("GetStudent")]
+        public async Task<Student> GetStudent(int Id)
+        {
+            return await _mediator.Send(new StudentQuery(Id));
+        }
+        [HttpPost("AddStudent")]
+        public async Task<Student> InsertStudent(string FirstName,string LastName)
+        {
+            return await _mediator.Send(new StudentInsertQuery(FirstName,LastName));
+        }
     }
 }
